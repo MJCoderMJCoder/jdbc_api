@@ -21,6 +21,13 @@ import java.util.stream.Collectors;
  * <p>
  * This Application class implements Spring Boot’s CommandLineRunner,
  * which means it will execute the run() method after the application context is loaded up.
+ * <p>
+ * Your application has actually zero configuration.
+ * Spring Boot will detect spring-jdbc on the classpath and h2 and will create a DataSource and a JdbcTemplate for you automatically.
+ * Because such infrastructure is now available and you have no dedicated configuration,
+ * a DataSourceTransactionManager will also be created for you:
+ * this is the component that intercepts the @Transactional annotated method (e.g. the book on BookingService).
+ * The BookingService is detected via classpath scanning.
  */
 @SpringBootApplication
 public class JdbcApiApplication implements CommandLineRunner {
